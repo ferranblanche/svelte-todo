@@ -6,21 +6,30 @@
 
   function handleSubmit(event) {
     let todo = event.target.todo.value;
-    todos = [...todos, todo]
+    todos = [...todos, todo];
   }
 </script>
 
 <main class="container">
   <article>
-    <h1>Todo list</h1>
+    <hgroup>
+      <h2>Todo list</h2>
+      <h3>Organize your work and life, finally.</h3>
+    </hgroup>
     <form on:submit|preventDefault={handleSubmit}>
-      <input id="todo" type="text" placeholder="What needs to be done?" autofocus />
+      <input
+        id="todo"
+        type="text"
+        placeholder="What needs to be done?"
+        autofocus
+      />
       <button>Add</button>
     </form>
-    <ul>
-      {#each todos as todo}
-        <li>{todo}</li>
-      {/each}
-    </ul>
+    {#each todos as todo}
+      <label for="">
+        <input type="checkbox" />
+        {todo}
+      </label>
+    {/each}
   </article>
 </main>
