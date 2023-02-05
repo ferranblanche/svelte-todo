@@ -5,7 +5,7 @@
 
 {#if $todoStore.length}
   {#each $todoStore as todo, index}
-    <TodoItem {todo} />
+    <TodoItem {todo} {index} />
   {/each}
 {:else}
   <p>Add something to rdo</p>
