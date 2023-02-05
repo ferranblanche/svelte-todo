@@ -5,6 +5,14 @@
   export let todo: Todo;
   export let index: number;
 
+  function handleTodoEdit() {
+    todo.editing = true;
+  }
+
+  function handleTodoSave() {
+    todo.editing = false;
+  }
+
   function handleTodoDelete() {
     todoStore.update((todos) => todos.filter((t, i) => i != index));
   }
@@ -12,8 +20,12 @@
 
 <div>
   <input type="checkbox" bind:checked={todo.completed} />
-  <p>{todo.content}</p>
-  <button class="outlined neutral">Edit</button>
+  <input type="text" bind:value={todo.content} disabled={!todo.editing} />
+  {#if todo.editing}
+    <button class="outlined neutral" on:click={handleTodoSave}>Save</button>
+  {:else}
+    <button class="outlined neutral" on:click={handleTodoEdit}>Edit</button>
+  {/if}
   <button class="outlined neutral" on:click={handleTodoDelete}>Delete</button>
 </div>
 
@@ -22,7 +34,7 @@
     @apply flex flex-row items-center justify-between gap-4 p-8 border-b border-neutral-100;
   }
 
-  p {
-    @apply grow;
+  input[type="text"] {
+    @apply grow disabled:border-transparent;
   }
 </style>

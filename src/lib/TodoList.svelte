@@ -8,7 +8,7 @@
     <TodoItem {todo} {index} />
   {/each}
 {:else}
-  <p>Add something to rdo</p>
+  <p>Add something to do</p>
 {/if}
 
 <style lang="postcss">

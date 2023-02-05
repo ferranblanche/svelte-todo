@@ -8,6 +8,7 @@
       let todo: Todo = {
         content: newTodoContent,
         completed: false,
+        editing: false
       };
       todoStore.update((todos) => [...todos, todo]);
       event.target.todo.value = "";
