@@ -1,6 +1,6 @@
 <script lang="ts">
   import type { Todo } from "../types";
-  import { todoStore } from "../todoStore";
+  import { todoStore } from "../stores/todoStore";
 
   function handleAddTodoForm(event): void {
     let newTodoContent: string = event.target.todo.value;

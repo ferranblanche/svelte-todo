@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { todoStore } from "../todoStore";
+  import { todoStore } from "../stores/todoStore";
   import type { Todo } from "../types";
 
   export let todo: Todo;
@@ -18,19 +18,19 @@
   }
 </script>
 
-<div>
+<form on:submit|preventDefault={handleTodoSave}>
   <input type="checkbox" bind:checked={todo.completed} />
   <input type="text" bind:value={todo.content} disabled={!todo.editing} />
   {#if todo.editing}
-    <button class="outlined neutral" on:click={handleTodoSave}>Save</button>
+    <button type="submit" class="outlined neutral" on:click={handleTodoSave}>Save</button>
   {:else}
     <button class="outlined neutral" on:click={handleTodoEdit}>Edit</button>
   {/if}
   <button class="outlined neutral" on:click={handleTodoDelete}>Delete</button>
-</div>
+</form>
 
 <style lang="postcss">
-  div {
+  form {
     @apply flex flex-row items-center justify-between gap-4 p-8 border-b border-neutral-100;
   }
 

@@ -1,11 +1,14 @@
 <script lang="ts">
-  import { todoStore } from "../todoStore";
+  import { todoStore } from "../stores/todoStore";
+  import { filterStore } from "../stores/filterStore";
   import TodoItem from "./TodoItem.svelte";
 </script>
 
 {#if $todoStore.length}
   {#each $todoStore as todo, index}
-    <TodoItem {todo} {index} />
+    {#if !$filterStore || ($filterStore && !todo.completed) }
+      <TodoItem {todo} {index} />
+    {/if}
   {/each}
 {:else}
   <p>Add something to do</p>

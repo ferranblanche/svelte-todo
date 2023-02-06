@@ -12,5 +12,13 @@ button.filled.accent {
 }
 
 button.outlined.neutral {
-  @apply border border-neutral-200;
+  @apply border border-neutral-200 dark:border-neutral-100;
+}
+
+input[type=text] {
+  @apply border-none rounded disabled:bg-transparent placeholder-neutral-500 bg-neutral-100 dark:bg-neutral-900;
+}
+
+input[type=checkbox] {
+  @apply h-6 w-6 rounded-full;
 }

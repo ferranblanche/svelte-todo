@@ -1,5 +1,5 @@
 import { writable } from 'svelte/store';
-import type { Todo } from './types';
+import type { Todo } from '../types';
 
 let todos: Todo[] = [];
 
