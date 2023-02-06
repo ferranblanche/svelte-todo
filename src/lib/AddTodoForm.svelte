@@ -2,8 +2,10 @@
   import type { Todo } from "../types";
   import { todoStore } from "../stores/todoStore";
 
-  function handleAddTodoForm(event): void {
-    let newTodoContent: string = event.target.todo.value;
+  let inputValue: string;
+
+  function handleAddTodoForm(): void {
+    let newTodoContent: string = inputValue;
     if (newTodoContent) {
       let todo: Todo = {
         content: newTodoContent,
@@ -11,14 +13,14 @@
         editing: false
       };
       todoStore.update((todos) => [...todos, todo]);
-      event.target.todo.value = "";
+      inputValue = "";
     }
   }
 </script>
 
 <form on:submit|preventDefault={handleAddTodoForm}>
-  <input id="todo" type="text" placeholder="What needs to be done?" autofocus />
-  <button type="submit" class="filled accent">Add</button>
+  <input id="todo" type="text" placeholder="What needs to be done?" bind:value={inputValue} autofocus />
+  <button type="submit" class="filled accent" disabled={!inputValue}>Add</button>
 </form>
 
 <style lang="postcss">

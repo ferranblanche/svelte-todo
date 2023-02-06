@@ -31,7 +31,7 @@
 
 <style lang="postcss">
   form {
-    @apply flex flex-row items-center justify-between gap-4 p-8 border-b border-neutral-100;
+    @apply flex flex-row items-center justify-between gap-4 p-8 border-b border-neutral-100 dark:border-neutral-900;
   }
 
   input[type="text"] {
